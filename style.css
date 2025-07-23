@@ -65,3 +65,11 @@ img {
   padding: 1rem;
   border-radius: 1rem;
 }
+.computer-choice {
+  text-align: center;
+  margin-top: 20px;
+}
+.computer-choice img {
+  width: 150px;
+  height: 150px;
+}

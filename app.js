@@ -5,6 +5,8 @@ const choices = document.querySelectorAll(".choice");
 const msg = document.querySelector(".msg");
 const userScorePara = document.querySelector("#user-score");
 const compScorePara = document.querySelector("#comp-score");
+const compChoiceImg = document.getElementById("comp-choice-img");
+
 
 const genCompChoice = () => {
   const options = ["rock", "paper", "scissors"];
@@ -34,8 +36,11 @@ const showWinner = (userWin, userChoice, compChoice) => {
 };
 
 const playGame = (userChoice) => {
-  // generate comp choice
   const compChoice = genCompChoice();
+
+  // Update the computer choice image
+  compChoiceImg.src = `./images/${compChoice}.png`;
+  compChoiceImg.alt = compChoice;
 
   if (userChoice === compChoice) {
     drawGame();
@@ -43,18 +48,17 @@ const playGame = (userChoice) => {
     let userWin = true;
 
     if (userChoice === "rock") {
-      //comp Choice : paper, scissors
       userWin = compChoice === "paper" ? false : true;
     } else if (userChoice === "paper") {
-      //compChoice : rock , scissors
       userWin = compChoice === "scissors" ? false : true;
     } else {
-      //compChoice = rock , paper
       userWin = compChoice === "rock" ? false : true;
     }
+
     showWinner(userWin, userChoice, compChoice);
   }
 };
+
 
 choices.forEach((choice) => {
   choice.addEventListener("click", () => {
